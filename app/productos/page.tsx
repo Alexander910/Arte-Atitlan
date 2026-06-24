@@ -111,9 +111,9 @@ export default function Productos() {
       setShowModal(false);
       resetForm();
       fetchProducts();
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error adding product:", error);
-      setErrorMsg(error.message || 'Hubo un error al guardar el producto');
+      setErrorMsg(error instanceof Error ? error.message : 'Hubo un error al guardar el producto');
     } finally {
       setIsSubmitting(false);
     }

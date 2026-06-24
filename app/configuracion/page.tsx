@@ -85,9 +85,9 @@ export default function Configuracion() {
       setNewName('');
       setNewRole('admin');
       fetchUsers();
-    } catch (e: any) {
+    } catch (e: unknown) {
       console.error("Error creating user:", e);
-      setErrorMsg(e.message || 'Error al crear usuario');
+      setErrorMsg(e instanceof Error ? e.message : 'Error al crear usuario');
     } finally {
       setIsSubmitting(false);
     }

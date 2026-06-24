@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 
 export default function Ventas() {
   const [cart, setCart] = useState<{id: number, name: string, price: number, qty: number}[]>([]);
@@ -18,7 +17,7 @@ export default function Ventas() {
     { id: 8, name: 'Tijeras de podar', price: 110, category: 'Herramientas', stock: 6 },
   ];
 
-  const addToCart = (product: any) => {
+  const addToCart = (product: { id: number; name: string; price: number; stock: number; category: string }) => {
     setCart(prev => {
       const exists = prev.find(item => item.id === product.id);
       if (exists) {

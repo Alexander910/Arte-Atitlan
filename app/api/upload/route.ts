@@ -44,10 +44,10 @@ export async function POST(request: NextRequest) {
     const url = `/uploads/${fileName}`;
     return NextResponse.json({ url }, { status: 200 });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error al guardar imagen:', error);
     return NextResponse.json(
-      { error: error.message || 'Error interno al guardar la imagen' },
+      { error: error instanceof Error ? error.message : 'Error interno al guardar la imagen' },
       { status: 500 }
     );
   }
